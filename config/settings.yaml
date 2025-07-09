@@ -1,7 +1,7 @@
 # === K-Site Configuration ===
 
 ga_tracking_id: G-XXXXXXX        # Replace with your GA4 ID or leave blank/null to disable
-site_base_path: "/k-test/"      # <- 🔧 REQUIRED for correct Home/Back links in GitHub Pages
+site_base_path: "/k-site-public/"      # <- 🔧 REQUIRED for correct Home/Back links in GitHub Pages
 
 rules:
   ignore_folders:
