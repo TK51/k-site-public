@@ -37,7 +37,7 @@ That’s it. GitHub Actions builds + deploys the site to GitHub Pages.
 - `.jpg`, `.png` → displayed inline (image passthrough)  
 - others → ignored or copied to `/download` if allowed
 
-_Rendering is automatic — no need to tag files or configure behavior. GitSite infers it from extension._
+_Rendering is automatic — no need to tag files or configure behavior. K-Site infers it from extension._
 
 ---
 
