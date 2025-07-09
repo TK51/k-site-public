@@ -1,0 +1,9 @@
+{
+  "project": "GitSite",
+  "status": "operational",
+  "features": ["viewer pages", "index pages", "config-driven"],
+  "metrics": {
+    "files_rendered": 12,
+    "build_time": "1.2s"
+  }
+}

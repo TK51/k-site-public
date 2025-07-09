@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitSite Landing</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; background: #fff; color: #000; }
+    a { color: #1a73e8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="gitsite-minimal-setup-guide">GitSite – Minimal Setup Guide<a class="headerlink" href="#gitsite-minimal-setup-guide" title="Permanent link">&para;</a></h1>
+<p>GitSite converts a GitHub repo into a static site of viewer pages and folder indexes.</p>
+<p>It’s a zero-GUI, automation-ready alternative to visual site builders — built for workflows, not decoration.</p>
+<hr />
+<h2 id="setup">🔧 SETUP<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Clone this repo.</li>
+<li>Edit <code>/config/settings.yaml</code>:<br />
+<code>site_base_path: /yourprojectname/</code> ← must match your GitHub Pages subpath<br />
+   Example: for <code>user.github.io/myrepo</code> → set <code>/myrepo/</code></li>
+<li>Push to <code>main</code> = safe your config file.</li>
+</ol>
+<p>That’s it. GitHub Actions builds + deploys the site to GitHub Pages.</p>
+<hr />
+<h2 id="structure">🗂 STRUCTURE<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>/content/</code> → your input files  </li>
+<li><code>/docs/</code> → auto-built static site  </li>
+<li><code>/docs/download/</code> → copied raw files  </li>
+<li><code>/src/templates/</code> → Jinja2 templates  </li>
+<li><code>/gitsite.py</code> → the builder script</li>
+</ul>
+<hr />
+<h2 id="file-types-supported">📁 FILE TYPES SUPPORTED<a class="headerlink" href="#file-types-supported" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>.md</code> → rendered as styled markdown  </li>
+<li><code>.py</code>, <code>.txt</code> → rendered as preformatted text/code block  </li>
+<li><code>.json</code> → rendered as prettified JSON (inside <code>&lt;pre&gt;</code>)  </li>
+<li><code>.csv</code> → rendered as an HTML table  </li>
+<li><code>.jpg</code>, <code>.png</code> → displayed inline (image passthrough)  </li>
+<li>others → ignored or copied to <code>/download</code> if allowed</li>
+</ul>
+<p><em>Rendering is automatic — no need to tag files or configure behavior. GitSite infers it from extension.</em></p>
+<hr />
+<h2 id="navigation">🧭 NAVIGATION<a class="headerlink" href="#navigation" title="Permanent link">&para;</a></h2>
+<p>Each viewer/index page includes:<br />
+- <strong>Home</strong> → always points to <code>{{ site_base_path }}</code> (config-driven)<br />
+- <strong>Back</strong> → browser history fallback  </p>
+<p>No manual routing. Fully config-based.</p>
+<hr />
+<h2 id="how-to-build">🚀 HOW TO BUILD<a class="headerlink" href="#how-to-build" title="Permanent link">&para;</a></h2>
+<p>Just push → GitHub Action runs<br />
+→ Site deploys at GitHub Pages URL</p>
+<p>Done.</p>
+<hr />
+<h2 id="site-contents">📑 Site Contents<a class="headerlink" href="#site-contents" title="Permanent link">&para;</a></h2>
+<h2 id="site-contents_1">Site Contents<a class="headerlink" href="#site-contents_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>📁 <a href="images/index.html">images</a></li>
+<li>📁 <a href="notes/index.html">notes</a></li>
+<li>📁 <a href="scripts/index.html">scripts</a></li>
+</ul>
+<!-- auto-generated TOC will be inserted here by build_readme_toc.py -->
+<p>(Will list all files and folders as links)</p>
+<hr />
+<p>🛠️ Built with <strong>KaySite</strong> — a zero-GUI, automation-first static site generator.<br />
+→ Want your docs turned into a site like this? <a href="https://www.linkedin.com/in/taras-khamardiuk">Contact me on LinkedIn</a></p>
+<p>— <em>Kay</em></p>
+</body>
+</html>
