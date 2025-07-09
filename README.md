@@ -2,7 +2,7 @@
 
 K-Site-Public converts a GitHub repo into a static site of viewer pages and folder indexes.
 
-It’s a zero-GUI, automation-ready alternative to visual site builders — built for workflows, not decoration.
+No GUI. No config hell. Just structure at the end of fully-automated pipeline.
 
 ---
 
@@ -63,7 +63,7 @@ Done.
 ## 📑 Site Contents
 
 <!-- auto-generated TOC will be inserted here by build_readme_toc.py -->
-(Will list all files and folders as links)
+(Will list all files and folders as links, like Table of Content)
 
 ---
 
