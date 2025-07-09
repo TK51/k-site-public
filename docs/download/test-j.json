@@ -1,5 +1,5 @@
 {
-  "project": "GitSite",
+  "project": "K-Site",
   "status": "operational",
   "features": ["viewer pages", "index pages", "config-driven"],
   "metrics": {
