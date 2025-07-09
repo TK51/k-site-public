@@ -30,7 +30,7 @@ jobs:
 
       - name: Run K-Site builder
         run: |
-          python src/k_site.py
+          python src/k-site.py
 
       - name: Commit /docs/ output
         run: |
