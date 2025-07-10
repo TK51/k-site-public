@@ -1,4 +1,4 @@
-# K-Site-Public – Minimal Setup Guide
+# K-Site-Public – Minimal Setup Guide x_X
 
 K-Site-Public converts a GitHub repo into a static site of viewer pages and folder indexes.
 
