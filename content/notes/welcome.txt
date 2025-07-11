@@ -1,1 +1,6 @@
 Welcome to the K-Site test.
+
+This is a public one, I have some more:
+- private repo zip indexed
+- desktop folder indexed (Windows, Linux)
+- desktop folder zipped with index in it (Windows, Linux)
