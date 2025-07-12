@@ -164,6 +164,7 @@ for root, _, files in os.walk(CONTENT_DIR):
         index_html = index_template.render(
             folder=str(rel_root),
             files=index_files,
+            ga_tracking_id=GA_ID,
             site_base_path=site_base_path
         )
         with open(target_folder / "index.html", "w", encoding="utf-8") as f:
