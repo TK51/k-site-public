@@ -53,21 +53,31 @@ def fix_links_in_readme(md: str) -> str:
     return markdown.markdown(md, extensions=["fenced_code", "tables", TocExtension(permalink=True), ExtraExtension()])
 
 # === BUILD TOC FROM OUTPUT DIR ===
+# def generate_site_toc():
+#     toc_lines = ["## Site Contents", ""]
+#     for item in sorted(OUTPUT_DIR.iterdir()):
+#         if item.is_dir() and (item / "index.html").exists():
+#             toc_lines.append(f"- 📁 [{item.name}]({item.name}/index.html)")
+#         elif item.is_file() and item.suffix == ".html" and "-viewer" in item.stem:
+#             label = item.stem.replace("-viewer", "")
+#             ext = Path(label).suffix
+#             emoji = {
+#                 ".py": "📄",
+#                 ".md": "📝",
+#                 ".json": "🔢",
+#                 ".csv": "📊"
+#             }.get(ext, "📄")
+#             toc_lines.append(f"- {emoji} [{label}]({item.name})")
+#     return "\n".join(toc_lines)
+
 def generate_site_toc():
-    toc_lines = ["## Site Contents", ""]
-    for item in sorted(OUTPUT_DIR.iterdir()):
+    toc_lines = []
+    for item in sorted(OUTPUT_DIR.iterdir(), key=lambda x: x.name.lower()):
         if item.is_dir() and (item / "index.html").exists():
             toc_lines.append(f"- 📁 [{item.name}]({item.name}/index.html)")
         elif item.is_file() and item.suffix == ".html" and "-viewer" in item.stem:
             label = item.stem.replace("-viewer", "")
-            ext = Path(label).suffix
-            emoji = {
-                ".py": "📄",
-                ".md": "📝",
-                ".json": "🔢",
-                ".csv": "📊"
-            }.get(ext, "📄")
-            toc_lines.append(f"- {emoji} [{label}]({item.name})")
+            toc_lines.append(f"- [{label}]({item.name})")
     return "\n".join(toc_lines)
 
 # === JINJA SETUP ===
@@ -165,16 +175,32 @@ for sub in OUTPUT_DIR.iterdir():
     if sub.is_dir() and (sub / "index.html").exists():
         root_links.append(f"{sub.name}/index.html")
 
+# readme_path = BASE_DIR / "README.md"
+# if readme_path.exists():
+#     with open(readme_path, "r", encoding="utf-8") as f:
+#         readme_md = f.read()
+
+#     toc_block = generate_site_toc()
+#     if "📑 Site Contents" in readme_md:
+#         readme_md = readme_md.replace("📑 Site Contents", f"📑 Site Contents\n\n{toc_block}")
+#     else:
+#         readme_md += "\n\n" + toc_block
+
+#     readme_html = fix_links_in_readme(readme_md)
 readme_path = BASE_DIR / "README.md"
 if readme_path.exists():
     with open(readme_path, "r", encoding="utf-8") as f:
         readme_md = f.read()
 
     toc_block = generate_site_toc()
-    if "📑 Site Contents" in readme_md:
-        readme_md = readme_md.replace("📑 Site Contents", f"📑 Site Contents\n\n{toc_block}")
-    else:
-        readme_md += "\n\n" + toc_block
+
+    # Replace placeholder block (including optional --- after it)
+    readme_md = re.sub(
+        r'<!-- auto-generated TOC.*?\(Will list.*?\)\s*---*',
+        f'<!-- auto-generated TOC -->\n\n{toc_block}\n',
+        readme_md,
+        flags=re.DOTALL
+    )
 
     readme_html = fix_links_in_readme(readme_md)
 
