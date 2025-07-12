@@ -196,7 +196,7 @@ if readme_path.exists():
 
     # Replace placeholder block (including optional --- after it)
     readme_md = re.sub(
-        r'<!-- auto-generated TOC.*?\(Will list.*?\)\s*---*',
+        r'<!-- auto-generated TOC.*?\(Will list.*?\)\s*',
         f'<!-- auto-generated TOC -->\n\n{toc_block}\n\n',
         readme_md,
         flags=re.DOTALL
